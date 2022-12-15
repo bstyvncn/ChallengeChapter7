@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: filmService
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/film-controller/**
+        - id: bookFilmService
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/book-film-controller/**
+        - id: seatsService
+          uri: http://localhost:8083/
+          predicates:
+            - Path=/seats-controller/**
+        - id: scheduleService
+          uri: http://localhost:8084/
+          predicates:
+            - Path=/schedule-controller/**
